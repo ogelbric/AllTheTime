@@ -67,10 +67,3 @@
 
 
 ```
-
-
-	
-	
-	
-	for f in `sudo kubectl --kubeconfig /etc/kubernetes/admin.conf  get pods -A | awk '{print $1"_" $2}'`; do  sudo kubectl logs --kubeconfig /etc/kubernetes/admin.conf -n ${f/_/ }; done | grep -i error
-
