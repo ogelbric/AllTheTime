@@ -1,0 +1,24 @@
+## Login Super visor
+```
+kubectl vsphere login --server 192.168.2.220 --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify
+```
+
+## Login Guest Cluster
+```
+kubectl vsphere login --server=192.168.2.220 --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify --tanzu-kubernetes-cluster-namespace namespace1000 --tanzu-kubernetes-cluster-name cluster3 --insecure-skip-tls-verify
+```
+
+## Cool comands
+```
+kubectl get tkc
+kubectl get virtualmachine
+kubectl get cluster
+kubectl get virtualmachineservice
+kubectl get vspherecluster
+kubectl get vspheremachine
+kubectl get machine
+kubectl get kcp
+kubectl get kubeadmconfig
+kubectl get tkr
+```
+
