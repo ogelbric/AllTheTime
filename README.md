@@ -22,7 +22,7 @@
 	chmod 600 cluster-ssh-key
 ```
 
-(3.1)	Worker nodes
+(3.1)	How to ssh to Worker nodes
 ```
 	kubectl -n $NAMESPACE get virtualmachines
 	kubectl -n $NAMESPACE get virtualmachines | grep node
@@ -36,7 +36,7 @@
 	df -h
 ```
 
-(3.1)	Control nodes
+(3.1)	How to ssh to Control nodes
 ```
 	kubectl -n $NAMESPACE get virtualmachines
 	kubectl -n $NAMESPACE get virtualmachines | grep -v node
