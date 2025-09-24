@@ -36,7 +36,7 @@
 	df -h
 ```
 
-(3.1)	How to ssh to Control nodes
+(3.2)	How to ssh to Control nodes
 ```
 	kubectl -n $NAMESPACE get virtualmachines
 	kubectl -n $NAMESPACE get virtualmachines | grep -v node
