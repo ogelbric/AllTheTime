@@ -1,6 +1,6 @@
 (1)	vCenter
 ```
-	https://92.168.1.50:5480			#Enable bash shell!!!
+	https://192.168.1.50:5480			#Enable bash shell!!!
 ```
 
 (2)	vCenter
