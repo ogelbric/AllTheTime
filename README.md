@@ -75,3 +75,7 @@
 ```
 https://wp-content.vmware.com/supervisor/v1/latest/lib.json
 ```
+# TKR content lib
+```
+https://wp-content.vmware.com/v2/latest/lib.json
+```
