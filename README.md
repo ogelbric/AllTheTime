@@ -79,3 +79,13 @@ https://wp-content.vmware.com/supervisor/v1/latest/lib.json
 ```
 https://wp-content.vmware.com/v2/latest/lib.json
 ```
+
+# Clusterclass Documentation
+
+```
+k get clusterclass
+k describe clusterclass builtin-generic-v3.3.0
+
+
+https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vsphere-supervisor-services-and-standalone-components/latest/managing-vsphere-kuberenetes-service-clusters-and-workloads/provisioning-tkg-service-clusters/using-the-cluster-v1beta1-api/using-the-versioned-clusterclass/usingbuiltingenericv330.html
+```
