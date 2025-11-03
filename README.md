@@ -89,3 +89,11 @@ k describe clusterclass builtin-generic-v3.3.0
 
 https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vsphere-supervisor-services-and-standalone-components/latest/managing-vsphere-kuberenetes-service-clusters-and-workloads/provisioning-tkg-service-clusters/using-the-cluster-v1beta1-api/using-the-versioned-clusterclass/usingbuiltingenericv330.html
 ```
+# K8 login
+
+```
+kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify
+
+kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify --tanzu-kubernetes-cluster-namespace namespace1000 --tanzu-kubernetes-cluster-name cluster3 --insecure-skip-tls-verify
+
+```
