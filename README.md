@@ -97,3 +97,9 @@ kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vs
 kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vsphere.local --insecure-skip-tls-verify --tanzu-kubernetes-cluster-namespace namespace1000 --tanzu-kubernetes-cluster-name cluster3 --insecure-skip-tls-verify
 
 ```
+
+# Offline image package move
+
+```
+https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/using-tkg-service-with-vsphere-supervisor/using-private-registries-with-tkg-service-clusters/push-standard-packages-to-a-private-harbor-registry.html
+```
