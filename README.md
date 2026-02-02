@@ -103,3 +103,26 @@ kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vs
 ```
 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/using-tkg-service-with-vsphere-supervisor/using-private-registries-with-tkg-service-clusters/push-standard-packages-to-a-private-harbor-registry.html
 ```
+
+# VCF CLI Install + Plugins
+```
+Download VCF CLI:       https://packages.broadcom.com/artifactory/vcf-distro/vcf-cli/
+Move to linux box:      scp vcf-cli.tar.gz orf@192.168.1.2:/tmp/.
+Untar:                  cd /tmp
+Untar:                  tar xvf vcf-cli.tar.gz
+Install:                sudo install  vcf-cli-linux_amd64 /usr/local/bin/vcf
+Test:                   vcf version
+Harbor:                 In Harbor create a project called vcf_cli
+Download all plugins:   vcf plugin download-bundle --to-tar /tmp/FILE-NAME.tar.gz
+Download Harbor cert:   go to projects and vcf_cli and there is a button download cert
+Copy cert into place:   sudo cp /tmp/ca.crt  /var/snap/docker/current/etc/docker/certs.d/harbor.lab.local
+Restart docker:         sudo snap restart docker
+Log into local Harbor:  docker login harbor.lab.local -u admin (Harbor12345)
+Update VCF with cert:   vcf config cert add --host harbor.lab.local --ca-certificate /tmp/ca.crt
+Upload to Harbor:       vcf plugin upload-bundle --tar /tmp/FILE-NAME.tar.gz --to-repo harbor.lab.local/vcf_cli/plugins
+Update new Harbor:      vcf plugin source update default --uri harbor.lab.local/vcf_cli/plugins/plugin-inventory:latest
+Clean up and validate:  vcf plugin clean && vcf plugin list
+Install cluster plugin: vcf plugin install cluster
+Check the install:      vcf plugin list installed
+Install the bassics:    vcf plugin install --group vmware-vcfcli/essentials
+```
