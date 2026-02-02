@@ -125,6 +125,24 @@ Clean up and validate:  vcf plugin clean && vcf plugin list
 Install cluster plugin: vcf plugin install cluster
 Check the install:      vcf plugin list installed
 Install the bassics:    vcf plugin install --group vmware-vcfcli/essentials
+
+#log into Supervisor cluster
+vcf context create  --endpoint https://192.168.2.201 --username administrator@vsphere.local --insecure-skip-tls-verify --auth-type basic
+#>sup1
+#>Password
+
+vcf plugin search
+vcf plugin install package
+vcf plugin install imgpkg
+vcf plugin install registry-secret
+vcf plugin install vm
+vcf plugin install secret
+vcf plugin install namespaces
+vcf plugin install addon
+vcf plugin install kubernetes-release
+
+vcf context use sup1:namespace1001
+
 ```
 
 # Bitnami - Harbor
