@@ -126,3 +126,20 @@ Install cluster plugin: vcf plugin install cluster
 Check the install:      vcf plugin list installed
 Install the bassics:    vcf plugin install --group vmware-vcfcli/essentials
 ```
+
+# Bitnami - Harbor
+```
+Download: https://vcf.broadcom.com/vsc/services/details/harbor-singlevm?slug=true
+Group: Emerging Solutions Tanzu SE
+
+Generate a key for the OVA: ssh-keygen -t rsa -b 4096
+
+Use this key for the OVA deploy: cat .ssh/id_rsa.pub
+
+Log on: ssh -i .ssh/id_rsa bitnami@192.168.1.15
+
+GUI: http://192.168.1.15/account/sign-in?redirect_url=%2Fharbor%2Fprojects
+ID: admin
+Password: This is located on the console (In my case: 2+C!aD+Y7Kla)
+Change: Select upper right hand user and select change password. 
+```
