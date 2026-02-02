@@ -157,3 +157,30 @@ kubectl create secret docker-registry regcred --docker-server=harbor-01a.site-a.
 
 ```
 
+# Standard packages pull and push (imgpkg install)
+=====================================================
+```
+#Download the binary
+curl -LO https://github.com/carvel-dev/imgpkg/releases/download/v0.47.1/imgpkg-linux-amd64
+
+#Move the binary in to your PATH
+mv imgpkg-linux-amd64 /usr/local/bin/imgpkg
+
+#Make the binary executable
+chmod +x /usr/local/bin/imgpkg
+
+#Get the packages into a tar file:
+imgpkg  copy --bundle projects.packages.broadcom.com/vsphere/supervisor/packages/2025.1.7/vks-standard-packages:v2025.1.7 --to-tar /tmp/temp2.tar --registry-response-header-timeout=600s
+
+#Create VKS project in Harbor: 
+GUI create vks public project
+
+#Test file: 
+ls -ltrah /tmp/temp2.tar
+file /tmp/temp2.tar
+
+#Copy From tar file to Harbor (ca.crt comes from harbor GUI):
+imgpkg copy --tar=/tmp/temp2.tar --to-repo harbor.lab.local/vks/vks-standard-packages --registry-response-header-timeout=600s --registry-ca-cert-path /tmp/ca.crt --concurrency 1
+```
+
+
