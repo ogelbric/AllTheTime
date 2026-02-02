@@ -158,7 +158,6 @@ kubectl create secret docker-registry regcred --docker-server=harbor-01a.site-a.
 ```
 
 # Standard packages pull and push (imgpkg install)
-=====================================================
 ```
 #Download the binary
 curl -LO https://github.com/carvel-dev/imgpkg/releases/download/v0.47.1/imgpkg-linux-amd64
