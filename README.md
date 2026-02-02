@@ -143,3 +143,17 @@ ID: admin
 Password: This is located on the console (In my case: 2+C!aD+Y7Kla)
 Change: Select upper right hand user and select change password. 
 ```
+
+
+# Set pod security policy and regcred
+```
+# ns=default
+kubectl label --overwrite ns default pod-security.kubernetes.io/enforce=privileged
+
+# ns=opencart
+kubectl create namespace opencart
+kubectl label ns opencart pod-security.kubernetes.io/enforce=privileged
+kubectl create secret docker-registry regcred --docker-server=harbor-01a.site-a.vcf.lab --docker-username="admin" --docker-password='mycoolpassword' --docker-email=administrator@vsphere.local -n opencart
+
+```
+
