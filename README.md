@@ -98,6 +98,37 @@ kubectl vsphere login --server=192.168.2.201 --vsphere-username administrator@vs
 
 ```
 
+# Bitnami - Harbor
+```
+Download: https://vcf.broadcom.com/vsc/services/details/harbor-singlevm?slug=true
+Group: Emerging Solutions Tanzu SE
+
+Generate a key for the OVA: ssh-keygen -t rsa -b 4096
+
+Use this key for the OVA deploy: cat .ssh/id_rsa.pub
+
+Log on: ssh -i .ssh/id_rsa bitnami@192.168.1.15
+
+GUI: http://192.168.1.15/account/sign-in?redirect_url=%2Fharbor%2Fprojects
+ID: admin
+Password: This is located on the console (In my case: 2+C!aD+Y7Kla)
+Change: Select upper right hand user and select change password. 
+```
+
+
+# Set pod security policy and regcred
+```
+# ns=default
+kubectl label --overwrite ns default pod-security.kubernetes.io/enforce=privileged
+
+# ns=opencart
+kubectl create namespace opencart
+kubectl label ns opencart pod-security.kubernetes.io/enforce=privileged
+kubectl create secret docker-registry regcred --docker-server=harbor-01a.site-a.vcf.lab --docker-username="admin" --docker-password='mycoolpassword' --docker-email=administrator@vsphere.local -n opencart
+
+```
+
+
 # Offline image package move
 
 ```
@@ -154,35 +185,7 @@ vcf package repository list
 
 ```
 
-# Bitnami - Harbor
-```
-Download: https://vcf.broadcom.com/vsc/services/details/harbor-singlevm?slug=true
-Group: Emerging Solutions Tanzu SE
 
-Generate a key for the OVA: ssh-keygen -t rsa -b 4096
-
-Use this key for the OVA deploy: cat .ssh/id_rsa.pub
-
-Log on: ssh -i .ssh/id_rsa bitnami@192.168.1.15
-
-GUI: http://192.168.1.15/account/sign-in?redirect_url=%2Fharbor%2Fprojects
-ID: admin
-Password: This is located on the console (In my case: 2+C!aD+Y7Kla)
-Change: Select upper right hand user and select change password. 
-```
-
-
-# Set pod security policy and regcred
-```
-# ns=default
-kubectl label --overwrite ns default pod-security.kubernetes.io/enforce=privileged
-
-# ns=opencart
-kubectl create namespace opencart
-kubectl label ns opencart pod-security.kubernetes.io/enforce=privileged
-kubectl create secret docker-registry regcred --docker-server=harbor-01a.site-a.vcf.lab --docker-username="admin" --docker-password='mycoolpassword' --docker-email=administrator@vsphere.local -n opencart
-
-```
 
 # Standard packages pull and push (imgpkg install)
 ```
