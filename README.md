@@ -143,6 +143,15 @@ vcf plugin install kubernetes-release
 
 vcf context use sup1:namespace1001
 
+#login to workload cluster
+vcf context create  --endpoint https://192.168.2.201 --username administrator@vsphere.local --insecure-skip-tls-verify --auth-type basic --workload-cluster-name cluster9 --workload-cluster-namespace namespace1001
+#>Provide a name for the context:  work1
+#>Provide Password:
+
+vcf context use work1:cluster9
+
+vcf package repository list
+
 ```
 
 # Bitnami - Harbor
