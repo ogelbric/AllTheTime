@@ -296,4 +296,26 @@ v1.34.1---vmware.1-vkr.4                  v1.34.1+vmware.1-vkr.4                
 v1.34.2---vmware.2-vkr.2                  v1.34.2+vmware.2-vkr.2                  False   False        18h
 ```
 
+# Virtual machine class example
+
+```
+ k get virtualmachineclass
+NAME                  CPU   MEMORY
+best-effort-2xlarge   8     64Gi
+best-effort-4xlarge   16    128Gi
+best-effort-8xlarge   32    128Gi
+best-effort-large     4     16Gi
+best-effort-medium    2     8Gi
+best-effort-small     2     4Gi
+best-effort-xlarge    4     32Gi
+best-effort-xsmall    2     2Gi
+guaranteed-2xlarge    8     64Gi
+guaranteed-4xlarge    16    128Gi
+guaranteed-8xlarge    32    128Gi
+guaranteed-large      4     16Gi
+guaranteed-medium     2     8Gi
+guaranteed-small      2     4Gi
+guaranteed-xlarge     4     32Gi
+guaranteed-xsmall     2     2Gi
+```
 
