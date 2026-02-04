@@ -212,4 +212,88 @@ file /tmp/temp2.tar
 imgpkg copy --tar=/tmp/temp2.tar --to-repo harbor.lab.local/vks/vks-standard-packages --registry-response-header-timeout=600s --registry-ca-cert-path /tmp/ca.crt --concurrency 1
 ```
 
+# What does a TKR look like? (Items with True can be deployed) 
+
+```
+orf@linuxjum:~$ k get tkr
+Warning: run.tanzu.vmware.com/tanzukubernetesrelease is deprecated. It is succeeded by kubernetes.vmware.com/kubernetesrelease. Refer to documentation.
+NAME                                      VERSION                                 READY   COMPATIBLE   CREATED   TYPE
+v1.16.12---vmware.1-tkg.1.da7afe7         v1.16.12+vmware.1-tkg.1.da7afe7         False   False        18h       Legacy
+v1.16.14---vmware.1-tkg.1.ada4837         v1.16.14+vmware.1-tkg.1.ada4837         False   False        18h       Legacy
+v1.16.8---vmware.1-tkg.3.60d2ffd          v1.16.8+vmware.1-tkg.3.60d2ffd          False   False        18h       Legacy
+v1.17.11---vmware.1-tkg.1.15f1e18         v1.17.11+vmware.1-tkg.1.15f1e18         False   False        18h       Legacy
+v1.17.11---vmware.1-tkg.2.ad3d374         v1.17.11+vmware.1-tkg.2.ad3d374         False   False        18h       Legacy
+v1.17.13---vmware.1-tkg.2.2c133ed         v1.17.13+vmware.1-tkg.2.2c133ed         False   False        18h       Legacy
+v1.17.17---vmware.1-tkg.1.d44d45a         v1.17.17+vmware.1-tkg.1.d44d45a         False   False        18h       Legacy
+v1.17.7---vmware.1-tkg.1.154236c          v1.17.7+vmware.1-tkg.1.154236c          False   False        18h       Legacy
+v1.17.8---vmware.1-tkg.1.5417466          v1.17.8+vmware.1-tkg.1.5417466          False   False        18h       Legacy
+v1.18.10---vmware.1-tkg.1.3a6cd48         v1.18.10+vmware.1-tkg.1.3a6cd48         False   False        18h       Legacy
+v1.18.15---vmware.1-tkg.1.600e412         v1.18.15+vmware.1-tkg.1.600e412         False   False        18h       Legacy
+v1.18.15---vmware.1-tkg.2.ebf6117         v1.18.15+vmware.1-tkg.2.ebf6117         False   False        18h       Legacy
+v1.18.19---vmware.1-tkg.1.17af790         v1.18.19+vmware.1-tkg.1.17af790         False   False        18h       Legacy
+v1.18.5---vmware.1-tkg.1.c40d30d          v1.18.5+vmware.1-tkg.1.c40d30d          False   False        18h       Legacy
+v1.19.11---vmware.1-tkg.1.9d9b236         v1.19.11+vmware.1-tkg.1.9d9b236         False   False        18h       Legacy
+v1.19.14---vmware.1-tkg.1.8753786         v1.19.14+vmware.1-tkg.1.8753786         False   False        18h       Legacy
+v1.19.16---vmware.1-tkg.1.df910e2         v1.19.16+vmware.1-tkg.1.df910e2         False   False        18h       Legacy
+v1.19.7---vmware.1-tkg.1.fc82c41          v1.19.7+vmware.1-tkg.1.fc82c41          False   False        18h       Legacy
+v1.19.7---vmware.1-tkg.2.f52f85a          v1.19.7+vmware.1-tkg.2.f52f85a          False   False        18h       Legacy
+v1.20.12---vmware.1-tkg.1.b9a42f3         v1.20.12+vmware.1-tkg.1.b9a42f3         False   False        18h       Legacy
+v1.20.2---vmware.1-tkg.1.1d4f79a          v1.20.2+vmware.1-tkg.1.1d4f79a          False   False        18h       Legacy
+v1.20.2---vmware.1-tkg.2.3e10706          v1.20.2+vmware.1-tkg.2.3e10706          False   False        18h       Legacy
+v1.20.7---vmware.1-tkg.1.7fb9067          v1.20.7+vmware.1-tkg.1.7fb9067          False   False        18h       Legacy
+v1.20.8---vmware.1-tkg.2                  v1.20.8+vmware.1-tkg.2                  False   False        18h       Legacy
+v1.20.9---vmware.1-tkg.1.a4cee5b          v1.20.9+vmware.1-tkg.1.a4cee5b          False   False        18h       Legacy
+v1.21.2---vmware.1-tkg.1.ee25d55          v1.21.2+vmware.1-tkg.1.ee25d55          False   False        18h       Legacy
+v1.21.6---vmware.1-tkg.1                  v1.21.6+vmware.1-tkg.1                  False   False        18h       Legacy
+v1.21.6---vmware.1-tkg.1.b3d708a          v1.21.6+vmware.1-tkg.1.b3d708a          False   False        18h       Legacy
+v1.22.9---vmware.1-tkg.1                  v1.22.9+vmware.1-tkg.1                  False   False        18h       Legacy
+v1.22.9---vmware.1-tkg.1.cc71bc8          v1.22.9+vmware.1-tkg.1.cc71bc8          False   False        18h       Legacy
+v1.23.15---vmware.1-tkg.4                 v1.23.15+vmware.1-tkg.4                 False   False        18h
+v1.23.8---vmware.2-tkg.2-zshippable       v1.23.8+vmware.2-tkg.2-zshippable       False   False        18h
+v1.23.8---vmware.3-tkg.1                  v1.23.8+vmware.3-tkg.1                  False   False        18h       Legacy
+v1.23.8---vmware.3-tkg.1.ubuntu           v1.23.8+vmware.3-tkg.1.ubuntu           False   False        18h       Legacy
+v1.24.11---vmware.1-fips.1-tkg.1          v1.24.11+vmware.1-fips.1-tkg.1          False   False        18h       Legacy
+v1.24.11---vmware.1-fips.1-tkg.1.ubuntu   v1.24.11+vmware.1-fips.1-tkg.1.ubuntu   False   False        18h       Legacy
+v1.24.9---vmware.1-tkg.4                  v1.24.9+vmware.1-tkg.4                  False   False        18h
+v1.25.13---vmware.1-fips.1-tkg.1          v1.25.13+vmware.1-fips.1-tkg.1          False   False        18h       Legacy
+v1.25.13---vmware.1-fips.1-tkg.1.ubuntu   v1.25.13+vmware.1-fips.1-tkg.1.ubuntu   False   False        18h       Legacy
+v1.25.7---vmware.3-fips.1-tkg.1           v1.25.7+vmware.3-fips.1-tkg.1           False   False        18h
+v1.26.10---vmware.1-fips.1-tkg.1          v1.26.10+vmware.1-fips.1-tkg.1          False   False        18h       Legacy
+v1.26.10---vmware.1-fips.1-tkg.1.ubuntu   v1.26.10+vmware.1-fips.1-tkg.1.ubuntu   False   False        18h       Legacy
+v1.26.12---vmware.2-fips.1-tkg.2          v1.26.12+vmware.2-fips.1-tkg.2          False   False        18h       Legacy
+v1.26.12---vmware.2-fips.1-tkg.2.ubuntu   v1.26.12+vmware.2-fips.1-tkg.2.ubuntu   False   False        18h       Legacy
+v1.26.13---vmware.1-fips.1-tkg.3          v1.26.13+vmware.1-fips.1-tkg.3          False   False        18h
+v1.26.5---vmware.2-fips.1-tkg.1           v1.26.5+vmware.2-fips.1-tkg.1           False   False        18h
+v1.27.10---vmware.1-fips.1-tkg.1          v1.27.10+vmware.1-fips.1-tkg.1          False   False        18h       Legacy
+v1.27.10---vmware.1-fips.1-tkg.1.ubuntu   v1.27.10+vmware.1-fips.1-tkg.1.ubuntu   False   False        18h       Legacy
+v1.27.11---vmware.1-fips.1-tkg.2          v1.27.11+vmware.1-fips.1-tkg.2          False   False        18h
+v1.27.16---vmware.2-fips-vkr.2            v1.27.16+vmware.2-fips-vkr.2            False   False        18h
+v1.27.6---vmware.1-fips.1-tkg.1           v1.27.6+vmware.1-fips.1-tkg.1           False   False        18h       Legacy
+v1.27.6---vmware.1-fips.1-tkg.1.ubuntu    v1.27.6+vmware.1-fips.1-tkg.1.ubuntu    False   False        18h       Legacy
+v1.28.15---vmware.3-fips-vkr.3            v1.28.15+vmware.3-fips-vkr.3            False   False        18h
+v1.28.7---vmware.1-fips.1-tkg.1           v1.28.7+vmware.1-fips.1-tkg.1           False   False        18h       Legacy
+v1.28.7---vmware.1-fips.1-tkg.1.ubuntu    v1.28.7+vmware.1-fips.1-tkg.1.ubuntu    False   False        18h       Legacy
+v1.28.8---vmware.1-fips.1-tkg.2           v1.28.8+vmware.1-fips.1-tkg.2           False   False        18h
+v1.29.15---vmware.1-fips-vkr.2            v1.29.15+vmware.1-fips-vkr.2            True    True         18h
+v1.29.4---vmware.3-fips.1-tkg.1           v1.29.4+vmware.3-fips.1-tkg.1           True    True         18h
+v1.30.1---vmware.1-fips-tkg.5             v1.30.1+vmware.1-fips-tkg.5             True    True         18h
+v1.30.11---vmware.1-fips-vkr.2            v1.30.11+vmware.1-fips-vkr.2            True    True         18h
+v1.30.14---vmware.1-fips-vkr.3            v1.30.14+vmware.1-fips-vkr.3            True    True         18h
+v1.30.8---vmware.1-fips-vkr.1             v1.30.8+vmware.1-fips-vkr.1             True    True         18h
+v1.31.1---vmware.2-fips-vkr.2             v1.31.1+vmware.2-fips-vkr.2             False   False        18h
+v1.31.11---vmware.3-fips-vkr.1            v1.31.11+vmware.3-fips-vkr.1            True    True         18h
+v1.31.14---vmware.1-fips-vkr.2            v1.31.14+vmware.1-fips-vkr.2            True    True         18h
+v1.31.4---vmware.1-fips-vkr.3             v1.31.4+vmware.1-fips-vkr.3             True    True         18h
+v1.31.7---vmware.1-fips-vkr.2             v1.31.7+vmware.1-fips-vkr.2             True    True         18h
+v1.32.0---vmware.6-fips-vkr.2             v1.32.0+vmware.6-fips-vkr.2             True    True         18h
+v1.32.10---vmware.1-fips-vkr.2            v1.32.10+vmware.1-fips-vkr.2            True    True         18h
+v1.32.3---vmware.1-fips-vkr.2             v1.32.3+vmware.1-fips-vkr.2             True    True         18h
+v1.32.7---vmware.3-fips-vkr.1             v1.32.7+vmware.3-fips-vkr.1             True    True         18h
+v1.33.1---vmware.1-fips-vkr.2             v1.33.1+vmware.1-fips-vkr.2             True    True         18h
+v1.33.3---vmware.1-fips-vkr.1             v1.33.3+vmware.1-fips-vkr.1             True    True         18h
+v1.33.6---vmware.1-fips-vkr.2             v1.33.6+vmware.1-fips-vkr.2             True    True         18h
+v1.34.1---vmware.1-vkr.4                  v1.34.1+vmware.1-vkr.4                  False   False        18h
+v1.34.2---vmware.2-vkr.2                  v1.34.2+vmware.2-vkr.2                  False   False        18h
+```
+
 
