@@ -318,4 +318,15 @@ guaranteed-small      2     4Gi
 guaranteed-xlarge     4     32Gi
 guaranteed-xsmall     2     2Gi
 ```
+# Rollbinding example 
 
+```
+ k get rolebinding -n namespace1000
+NAME                                ROLE                                          AGE
+cluster-autoscaler-role-binding     ClusterRole/cluster-autoscaler-cluster-role   17h
+cluster1-bjpd4-ccm                  Role/cluster1-bjpd4-ccm                       17h
+cluster1-bjpd4-pvbackupdriver       Role/cluster1-bjpd4-pvbackupdriver            17h
+cluster1-bjpd4-pvcsi                Role/cluster1-bjpd4-pvcsi                     17h
+edit:vsphere.local:Administrators   ClusterRole/edit                              18h
+view:vsphere.local:Administrators   ClusterRole/view                              18h
+```
