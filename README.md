@@ -28,8 +28,7 @@
 (3.1)	How to ssh to Worker nodes
 ```
 	kubectl -n $NAMESPACE get virtualmachines
-	kubectl -n $NAMESPACE get virtualmachines | grep node
-	export NODE=`kubectl -n $NAMESPACE get virtualmachines | grep node | tail -1 | awk '{print $1}'`
+	export NODE=`kubectl -n $NAMESPACE get virtualmachines  | tail -1 | awk '{print $1}'`
 
  	export VMIP=`kubectl -n $NAMESPACE get virtualmachine $NODE  -o jsonpath='{$.status..primaryIP4}'`
 	echo $VMIP
@@ -42,8 +41,7 @@
 (3.2)	How to ssh to Control nodes
 ```
 	kubectl -n $NAMESPACE get virtualmachines
-	kubectl -n $NAMESPACE get virtualmachines | grep -v node
-	export WNODE=`kubectl -n $NAMESPACE get virtualmachines | grep -v node | tail -1 | awk '{print $1}'`
+	export WNODE=`kubectl -n $NAMESPACE get virtualmachines  | tail -1 | awk '{print $1}'`
 
  	export VMIPW=`kubectl -n $NAMESPACE get virtualmachine $WNODE  -o jsonpath='{$.status..primaryIP4}'`
 	echo $VMIPW
