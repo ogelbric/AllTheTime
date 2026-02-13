@@ -34,10 +34,6 @@ spec:
           mountPath: /var/lib/containerd
           storageClass: management-storage-policy-regular
           capacity: 20Gi
-        - name: etcd
-          mountPath: /var/lib/etcd
-          storageClass: management-storage-policy-regular
-          capacity: 4Gi
         - name: kubelet-override
           mountPath: /var/lib/kubelet
           storageClass: management-storage-policy-regular
