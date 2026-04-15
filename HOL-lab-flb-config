@@ -1,4 +1,5 @@
-holuser@console:~/Downloads/wcp-config-sup15-1$ cat wcp-config-sup15-1.json
+cat wcp-config-sup15-1.json
+
 {
   "specVersion": "1.0",
   "supervisorSpec": {
@@ -83,6 +84,6 @@ holuser@console:~/Downloads/wcp-config-sup15-1$ cat wcp-config-sup15-1.json
     "apiServerDnsNames": [],
     "cpvmCount": 1
   }
-}holuser@con
+}
 
 
