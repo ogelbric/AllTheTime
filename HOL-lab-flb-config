@@ -1,0 +1,88 @@
+holuser@console:~/Downloads/wcp-config-sup15-1$ cat wcp-config-sup15-1.json
+{
+  "specVersion": "1.0",
+  "supervisorSpec": {
+    "supervisorName": "sup15-1"
+  },
+  "envSpec": {
+    "vcenterDetails": {
+      "vcenterAddress": "vc-wld01-a.site-a.vcf.lab",
+      "vcenterDatacenter": "dc-a",
+      "vSphereZones": [
+        "z-wld-a"
+      ]
+    }
+  },
+  "tkgsComponentSpec": {
+    "foundationLoadBalancerComponents": {
+      "flbName": "flb-sup15-1",
+      "flbSize": "SMALL",
+      "flbAvailability": "ACTIVE_PASSIVE",
+      "flbVipRanges": [
+        "10.1.3.61 - 10.1.3.75"
+      ],
+      "flbDnsServers": [
+        "10.1.1.1"
+      ],
+      "flbNtpServers": [
+        "10.1.1.1"
+      ],
+      "flbManagementNetwork": {
+        "flbNetworkIpAssignmentMode": "STATICRANGE",
+        "flbNetworkName": "mgmt-vds01-wld01-01a",
+        "flbNetworkPortgroupId": "dvportgroup-17",
+        "flbNetworkIpAddressRanges": "10.1.1.45 - 10.1.1.60",
+        "flbNetworkGateway": "10.1.1.1",
+        "flbNetworkSubnet": "255.255.255.0"
+      },
+      "flbVirtualServerNetwork": {
+        "flbNetworkIpAssignmentMode": "STATICRANGE",
+        "flbNetworkName": "workload-vmotion",
+        "flbNetworkPortgroupId": "dvportgroup-18",
+        "flbNetworkIpAddressRanges": "10.1.3.45 - 10.1.3.60",
+        "flbNetworkGateway": "10.1.3.1",
+        "flbNetworkSubnet": "255.255.255.128"
+      }
+    },
+    "tkgsMgmtNetworkSpec": {
+      "tkgsMgmtIpAssignmentMode": "STATICRANGE",
+      "tkgsMgmtNetworkName": "mgmt-vds01-wld01-01a",
+      "tkgsMgmtNetworkGatewayCidr": "10.1.1.1/24",
+      "tkgsMgmtNetworkStartingIp": "10.1.1.45 - 10.1.1.60",
+      "tkgsMgmtNetworkDnsServers": [
+        "10.1.1.1"
+      ],
+      "tkgsMgmtNetworkSearchDomains": [
+        "site-a.vcf.lab"
+      ],
+      "tkgsMgmtNetworkNtpServers": [
+        "10.1.1.1"
+      ]
+    },
+    "tkgsStoragePolicySpec": {
+      "masterStoragePolicy": "cluster-wld01-01a vSAN Storage Policy",
+      "ephemeralStoragePolicy": "cluster-wld01-01a vSAN Storage Policy",
+      "imageStoragePolicy": "cluster-wld01-01a vSAN Storage Policy"
+    },
+    "tkgsPrimaryWorkloadNetwork": {
+      "tkgsPrimaryWorkloadIpAssignmentMode": "STATICRANGE",
+      "tkgsPrimaryWorkloadPortgroupName": "vmotion-vds01-wld01-01a",
+      "tkgsPrimaryWorkloadNetworkName": "workload-vmotion",
+      "tkgsPrimaryWorkloadNetworkGatewayCidr": "10.1.3.1/25",
+      "tkgsPrimaryWorkloadNetworkStartRange": "10.1.3.45",
+      "tkgsPrimaryWorkloadNetworkEndRange": "10.1.3.60",
+      "tkgsWorkloadDnsServers": [
+        "10.1.1.1"
+      ],
+      "tkgsWorkloadNtpServers": [
+        "10.1.1.1"
+      ],
+      "tkgsWorkloadServiceCidr": "10.96.0.0/23"
+    },
+    "controlPlaneSize": "SMALL",
+    "apiServerDnsNames": [],
+    "cpvmCount": 1
+  }
+}holuser@con
+
+
