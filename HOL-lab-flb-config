@@ -1,9 +1,9 @@
-cat wcp-config-sup15-1.json
 
+   cat wcp-config-sup16-1.json
 {
   "specVersion": "1.0",
   "supervisorSpec": {
-    "supervisorName": "sup15-1"
+    "supervisorName": "sup16-1"
   },
   "envSpec": {
     "vcenterDetails": {
@@ -16,11 +16,11 @@ cat wcp-config-sup15-1.json
   },
   "tkgsComponentSpec": {
     "foundationLoadBalancerComponents": {
-      "flbName": "flb-sup15-1",
+      "flbName": "flb-sup16-1",
       "flbSize": "SMALL",
       "flbAvailability": "ACTIVE_PASSIVE",
       "flbVipRanges": [
-        "10.1.3.61 - 10.1.3.75"
+        "10.1.3.61 - 10.1.3.80"
       ],
       "flbDnsServers": [
         "10.1.1.1"
@@ -32,13 +32,13 @@ cat wcp-config-sup15-1.json
         "flbNetworkIpAssignmentMode": "STATICRANGE",
         "flbNetworkName": "mgmt-vds01-wld01-01a",
         "flbNetworkPortgroupId": "dvportgroup-17",
-        "flbNetworkIpAddressRanges": "10.1.1.45 - 10.1.1.60",
+        "flbNetworkIpAddressRanges": "10.1.1.188 - 10.1.1.199",
         "flbNetworkGateway": "10.1.1.1",
         "flbNetworkSubnet": "255.255.255.0"
       },
       "flbVirtualServerNetwork": {
         "flbNetworkIpAssignmentMode": "STATICRANGE",
-        "flbNetworkName": "workload-vmotion",
+        "flbNetworkName": "work-vmotion",
         "flbNetworkPortgroupId": "dvportgroup-18",
         "flbNetworkIpAddressRanges": "10.1.3.45 - 10.1.3.60",
         "flbNetworkGateway": "10.1.3.1",
@@ -49,7 +49,7 @@ cat wcp-config-sup15-1.json
       "tkgsMgmtIpAssignmentMode": "STATICRANGE",
       "tkgsMgmtNetworkName": "mgmt-vds01-wld01-01a",
       "tkgsMgmtNetworkGatewayCidr": "10.1.1.1/24",
-      "tkgsMgmtNetworkStartingIp": "10.1.1.45 - 10.1.1.60",
+      "tkgsMgmtNetworkStartingIp": "10.1.1.188 - 10.1.1.199",
       "tkgsMgmtNetworkDnsServers": [
         "10.1.1.1"
       ],
@@ -68,7 +68,7 @@ cat wcp-config-sup15-1.json
     "tkgsPrimaryWorkloadNetwork": {
       "tkgsPrimaryWorkloadIpAssignmentMode": "STATICRANGE",
       "tkgsPrimaryWorkloadPortgroupName": "vmotion-vds01-wld01-01a",
-      "tkgsPrimaryWorkloadNetworkName": "workload-vmotion",
+      "tkgsPrimaryWorkloadNetworkName": "work-vmotion",
       "tkgsPrimaryWorkloadNetworkGatewayCidr": "10.1.3.1/25",
       "tkgsPrimaryWorkloadNetworkStartRange": "10.1.3.45",
       "tkgsPrimaryWorkloadNetworkEndRange": "10.1.3.60",
@@ -84,6 +84,5 @@ cat wcp-config-sup15-1.json
     "apiServerDnsNames": [],
     "cpvmCount": 1
   }
-}
-
+}holuser@console:~/Downloads/wcp-config-sup16-1$ 
 
