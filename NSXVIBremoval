@@ -1,0 +1,146 @@
+# Old notes of NSX VIB removal
+
+```
+Removing NSXT from ESXi (clean / delete)
+=======================
+
+esxcli software vib list | grep nsx
+
+
+esxcli software vib remove -n nsx-adf
+esxcli software vib remove -n nsx-aggservice
+esxcli software vib remove -n nsx-cli-libs
+esxcli software vib remove -n nsx-vdpi
+esxcli software vib remove -n nsxcli
+esxcli software vib remove -n nsx-sfhc
+esxcli software vib remove -n nsx-aggservice
+esxcli software vib remove -n nsx-context-mux
+esxcli software vib remove -n nsx-host
+esxcli software vib remove -n nsx-mpa
+esxcli software vib remove -n nsx-proxy
+esxcli software vib remove -n nsx-proxy
+esxcli software vib remove -n nsx-exporter
+esxcli software vib remove -n nsx-ops-agent
+esxcli software vib remove -n nsx-nestdb
+esxcli software vib remove -n nsx-mpa
+esxcli software vib remove -n nsx-python-gevent
+esxcli software vib remove -n nsx-python-greenlet
+esxcli software vib remove -n nsx-python-logging
+esxcli software vib remove -n nsx-python-protobuf
+esxcli software vib remove -n nsx-opsagent
+esxcli software vib remove -n nsxcli
+esxcli software vib remove -n nsx-mpa
+esxcli software vib remove -n nsx-platform-client
+esxcli software vib remove -n nsx-mpa
+esxcli software vib remove -n nsx-aggservice
+esxcli software vib remove -n nsx-netcpa
+esxcli software vib remove -n nsx-nestdb
+esxcli software vib remove -n nsx-context-mux
+esxcli software vib remove -n nsx-python-protobuf
+esxcli software vib remove -n nsx-nestdb
+esxcli software vib remove -n nsx-proxy
+esxcli software vib remove -n nsx-nestdb
+esxcli software vib remove -n nsx-esx-datapath
+esxcli software vib remove -n nsx-python-protobuf
+esxcli software vib remove -n nsx-upm-libs
+esxcli software vib remove -n nsx-rpc-libs
+esxcli software vib remove -n nsx-nestdb-libs
+esxcli software vib remove -n nsx-profiling-libs
+esxcli software vib remove -n nsx-rpc-libs
+esxcli software vib remove -n nsx-metrics-libs
+esxcli software vib remove -n nsx-cli-libs
+esxcli software vib remove -n nsx-common-libs
+esxcli software vib remove -n nsx-shared-libs
+esxcli software vib remove -n nsx-esx-datapath
+esxcli software vib remove --vibname=nsx-esx-datapath --force --no-live-install
+esxcli software vib remove -n nsx-common-libs
+esxcli software vib remove -n nsx-shared-libs
+esxcli software vib remove -n nsx-esx-datapath
+esxcli software vib remove -n nsx-upm-libs
+reboot
+esxcli software vib remove -n nsx-profiling-libs
+esxcli software vib remove -n nsx-nestdb-libs
+esxcli software vib remove -n nsx-rpc-libs
+esxcli software vib remove -n nsx-metrics-libs
+esxcli software vib remove -n nsx-common-libs
+esxcli software vib remove -n nsx-shared-libs
+
+
+
+
+
+
+netstat -na equivalent => esxcli network ip connection list
+
+esxcli network nic list
+
+
+esxcli network nic list
+Name    PCI Device    Driver  Admin Status  Link Status  Speed  Duplex  MAC Address         MTU  Description
+------  ------------  ------  ------------  -----------  -----  ------  -----------------  ----  -------------------------------------
+vmnic0  0000:18:00.0  ixgben  Up            Up           10000  Full    e4:43:4b:72:d7:9e  1600  Intel(R) Ethernet Controller 10G X550
+vmnic1  0000:18:00.1  ixgben  Up            Up           10000  Full    e4:43:4b:72:d7:9f  1500  Intel(R) Ethernet Controller 10G X550
+vmnic2  0000:19:00.0  ixgben  Up            Down             0  Half    e4:43:4b:72:d7:a0  1500  Intel(R) Ethernet Controller 10G X550
+vmnic3  0000:19:00.1  ixgben  Up            Down             0  Half    e4:43:4b:72:d7:a1  1500  Intel(R) Ethernet Controller 10G X550
+
+localcli --plugin-dir /usr/lib/vmware/esxcli/int/ deviceInternal alias list
+Bus type  Bus address          Alias
+------------------------------------
+pci       s00000005.00         vmhba2
+pci       p0000:00:17.0        vmhba1
+pci       s00000007.00         vmhba3
+pci       m00000004            vmnic3
+pci       m00000003            vmnic2
+pci       m00000002            vmnic1
+pci       p0000:00:11.5        vmhba0
+pci       m00000001            vmnic0
+logical   pci#s00000005.00#0   vmhba2
+logical   pci#s00000007.00#0   vmhba3
+logical   pci#m00000003#0      vmnic2
+logical   pci#m00000001#0      vmnic0
+logical   pci#p0000:00:11.5#0  vmhba0
+logical   pci#m00000002#0      vmnic1
+logical   pci#p0000:00:17.0#0  vmhba1
+logical   pci#m00000004#0      vmnic3
+
+localcli --plugin-dir /usr/lib/vmware/esxcli/int/ deviceInternal alias store --bus-type pci --alias vmnic1 --bus-address m00000003
+ 
+localcli --plugin-dir /usr/lib/vmware/esxcli/int/ deviceInternal alias store --bus-type pci --alias vmnic2 --bus-address m00000002
+
+
+
+Host configuration: host switch apply operation failed: [ApplyDvs(4b 7d e2 6f e4 75 42 9f-bb f3 e3 1d 82 e7 f9 a7) failed: {'fault1': {'faultMessage': ['Operation failed, diagnostics report: Create DVSwitch failed: Unable to Associate Proxy DVS: Status(bad0001)= Failure'], 'objectId': '4b 7d e2 6f e4 75 42 9f-bb f3 e3 1d 82 e7 f9 a7', 'msg': 'An error occurred during host configuration.', 'fault': 'PlatformConfigFault'}}; Failed to read opaque switch spec]; ApplyHostSwitchMode to [Orf2Hostswitch1] failed : Failed to read opaque switch spec. ; VTEP [vmk10,24.24.24.1] failed to be applied: Failed to create/update vtep port: {'fault1': {'faultMessage': [], 'objectId': '10', 'msg': 'The object or item referred to could not be found.', 'fault': 'NotFound'}}; UpdateNsxaHealth for DVS [Orf2Hostswitch1] failed: . ; App Init configuration: AppInitConfig skipped. LogicalSwitch full-sync: LogicalSwitch full-sync skipped.
+
+
+---------------------
+cat  /var/run/log/nsx-opsagent.log
+-------------------------------------
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: [nsx@6876 comp="nsx-esx" subcomp="opsagent" s2comp="nsxa" tid="2109919" level="ERROR"] [ExecuteCmdWithRetry] cmd = net-dvs -s "com.vmware.common.opaqueDvs.status.component.nsxa=down" -p hostPropList 'Orf2Hostswitch1' , ret = 255, reply =  retryCount = 1
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: [nsx@6876 comp="nsx-esx" subcomp="opsagent" s2comp="nsxa" tid="2109919" level="INFO"] [HostConfigReply] sending HostConfig RPC reply...: host_switches {   switch_id: "4b 7d e2 6f e4 75 42 9f-bb f3 e3 1d 82 e7 f9 a7"   host_switch_profiles {     uplink_profile {       teaming_policy: FAILOVER       active {         type: PHYSICAL_NIC         name: "uplink-1"       }       standby {         type: PHYSICAL_NIC         name: "uplink-2"       }     }     lldp_profile {       send_enabled: false     }     nioc_profile {       infra_traffic_resources {         key: FAULT_TOLERANCE         allocation {           limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: HBR         allocation {           limit: -1           shares: 50           reservation: 0         }
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: }       infra_traffic_resources {         key: ISCSI         allocation {           limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: MANAGEMENT         allocation {           limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: NFS         allocation {           limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: VDP         allocation {           limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: VIRTUAL_MACHINE         allocation {           limit: -1           shares: 100           reservation: 0         }       }       infra_traffic_resources {         key: VMOTION         allocation {
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: limit: -1           shares: 50           reservation: 0         }       }       infra_traffic_resources {         key: VSAN         allocation {           limit: -1           shares: 50           reservation: 0         }       }       enabled: true     }   }   pnics {     device_name: "vmnic1"     uplink_name: "uplink-1"   }   transportzone_id: "6153509a-1110-4868-aede-ea8647517b8e"   transport_vlan: 1061   mtu: 1600   switch_name: "Orf2Hostswitch1"   subnet_mask: "255.255.255.0"   default_gateway: ""   vtep_on_static_ip: true   overlay: true   mode: STANDARD   overlay_encap: GENEVE } config_version: "0" operation_result: "host switch apply operation failed: [ApplyDvs(4b 7d e2 6f e4 75 42 9f-bb f3 e3 1d 82 e7 f9 a7) failed: {\'fault1\': {\'faultMessage\': [\'Operation failed, diagnostics report: Create DVSwitch failed: Unable to Associate Proxy DVS: Status(bad0001)= F
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: ailure\'], \'objectId\': \'4b 7d e2 6f e4 75 42 9f-bb f3 e3 1d 82 e7 f9 a7\', \'msg\': \'An error occurred during host configuration.\', \'fault\': \'PlatformConfigFault\'}}; Failed to read opaque switch spec]; ApplyHostSwitchMode to [Orf2Hostswitch1] failed : Failed to read opaque switch spec. ; VTEP [vmk10,24.24.24.1] failed to be applied: Failed to create/update vtep port: {\'fault1\': {\'faultMessage\': [], \'objectId\': \'10\', \'msg\': \'The object or item referred to could not be found.\', \'fault\': \'NotFound\'}}; UpdateNsxaHealth for DVS [Orf2Hostswitch1] failed: . ; " host_id: "69fcd490-d3d0-4949-bb9f-2ec8204876eb" transport_node_id: "69fcd490-d3d0-4949-bb9f-2ec8204876eb" error_code: 8700 host_config_msg_id: "ec252cf2-9357-4dd4-ab5e-6d991bb0f055" type: HYPERVISOR
+2019-07-14T13:58:04Z nsx-opsagent[2109798]: [nsx@6876 comp="nsx-esx" subcomp="opsagent" s2comp="nsxa" tid="2109919" level="INFO"] [SendMsg] Sending message (type:com.vmware.nsx.switching.HostConfigMsg, len:1361) replyTo: management_AFD50E42-1F46-5285-F351-032D475E0B67_cvn-hv_SwitchingVertical_0 correlationId:1b59472f-a81c-4a33-8f17-58db60dab7ca
+
+
+Delete an old NSXT switch
+
+net-dvs
+net-dvs  -d hostswitch21
+net-dvs
+
+net-dvs | grep com.vmware.common.alias
+net-dvs  -d hostswitch1
+
+
+Remove opaque network
+=====================
+cd /etc/vmware/hostd
+mv opaqueNetwork.xml.gz opaqueNetwork.xml.gz.bak
+/etc/init.d/hostd restart
+
+
+```
+
+
+
