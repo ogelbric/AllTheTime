@@ -6,9 +6,10 @@ Removing NSXT from ESXi (clean / delete)
 
 esxcli software vib list | grep nsx
 
-new list for ESX 9.0nsx-adf
-esxcli software vib remove -n 
+New list for ESX 9.0
 
+
+esxcli software vib remove -n nsx-adf
 esxcli software vib remove -n nsx-cfgagent
 esxcli software vib remove -n nsx-context-mux
 esxcli software vib remove -n nsx-cpp-libs
