@@ -6,6 +6,34 @@ Removing NSXT from ESXi (clean / delete)
 
 esxcli software vib list | grep nsx
 
+new list for ESX 9.0nsx-adf
+esxcli software vib remove -n 
+
+esxcli software vib remove -n nsx-cfgagent
+esxcli software vib remove -n nsx-context-mux
+esxcli software vib remove -n nsx-cpp-libs
+esxcli software vib remove -n nsx-esx-datapath
+esxcli software vib remove -n nsx-exporter
+esxcli software vib remove -n nsx-host
+esxcli software vib remove -n nsx-ids
+esxcli software vib remove -n nsx-monitoring
+esxcli software vib remove -n nsx-mpa
+esxcli software vib remove -n nsx-nestdb
+esxcli software vib remove -n nsx-netopa
+esxcli software vib remove -n nsx-opsagent
+esxcli software vib remove -n nsx-platform-client
+esxcli software vib remove -n nsx-proto2-libs
+esxcli software vib remove -n nsx-proxy
+esxcli software vib remove -n nsx-python-logging
+esxcli software vib remove -n nsx-python-protobuf
+esxcli software vib remove -n nsx-python-utils
+esxcli software vib remove -n nsx-sfhc
+esxcli software vib remove -n nsx-shared-libs
+esxcli software vib remove -n nsx-snproxy
+esxcli software vib remove -n nsx-vdpi
+esxcli software vib remove -n nsxcli
+
+
 
 esxcli software vib remove -n nsx-adf
 esxcli software vib remove -n nsx-aggservice
