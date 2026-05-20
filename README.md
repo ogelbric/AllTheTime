@@ -328,3 +328,19 @@ cluster1-bjpd4-pvcsi                Role/cluster1-bjpd4-pvcsi                   
 edit:vsphere.local:Administrators   ClusterRole/edit                              18h
 view:vsphere.local:Administrators   ClusterRole/view                              18h
 ```
+
+# Other commands
+
+```
+kubectl get clusters -A 
+kubectl get virtualmachines -A
+kubectl get tkr 
+kubect get virtualmachineservice -A
+kubect get virtualmachineclasses -A
+kubectl get machines -A
+kubectl api-resources
+kubectl cluster-info
+kubectl get pods -A
+kubectl get nodes -A
+```
+
