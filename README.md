@@ -344,3 +344,86 @@ kubectl get pods -A
 kubectl get nodes -A
 ```
 
+#Example 3.3 cluster yaml
+
+```
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: cluster4
+  namespace: namespace2000
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks: ["10.96.2.0/12"]
+      # cidrBlocks: ["192.168.0.0/20"]
+    pods:
+      cidrBlocks: ["192.168.16.0/20"]
+      # cidrBlocks: ["192.168.16.0/20"]
+    serviceDomain: "cluster.local"
+  topology:
+    #class: tanzukubernetescluster
+    class: builtin-generic-v3.3.0
+    version: v1.32.7---vmware.3-fips-vkr.1
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: node-pool-1
+          replicas: 2
+    variables:
+      - name: vmClass
+        value: best-effort-medium
+      - name: storageClass
+        value: management-storage-policy-regular
+      - name: volumes
+        value:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          storageClass: management-storage-policy-regular
+          capacity: 20Gi
+        - name: etcd
+          mountPath: /var/lib/etcd
+          storageClass: management-storage-policy-regular
+          capacity: 4Gi
+        - name: kubelet-override
+          mountPath: /var/lib/kubelet
+          storageClass: management-storage-policy-regular
+          capacity: 40Gi
+      - name: node
+        value:
+          labels:
+            tenant: tenant-foo
+            organization: engineering
+            managed: ""
+      - name: kubernetes
+        value:
+          certificateRotation:
+            enabled: true
+            renewalDaysBeforeExpiry: 99
+          security:
+            podSecurityStandard:
+              #deactivated: false
+              audit: privileged
+              auditVersion: latest
+              enforce: privileged
+              enforceVersion: latest
+              warn: privileged
+              warnVersion: latest
+      - name: vsphereOptions
+        value:
+          persistentVolumes:
+            availableStorageClasses:
+            - management-storage-policy-regular
+            defaultStorageClass: management-storage-policy-regular
+            availableVolumeSnapshotClasses:
+            - management-storage-policy-regular
+            defaultVolumeSnapshotClass: management-storage-policy-regular
+      - name: osConfiguration
+        value:
+          ntp:
+            servers:
+              - ntp.broadcom.net
+```
+
